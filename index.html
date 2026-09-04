@@ -96,9 +96,9 @@ header.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.45);background:rgba(8,2
   font-family:Consolas,monospace;font-weight:700;font-size:1rem;
   background:rgba(211,188,141,.08);
 }
-.logo-txt{display:flex;flex-direction:column;line-height:1.4}
-.logo-txt b{color:#fff;font-size:1rem;font-weight:800}
-.logo-txt span{color:var(--gold-2);font-size:.68rem;font-weight:700}
+.logo-txt{display:flex;flex-direction:column;line-height:1.3}
+.logo-txt b{color:var(--gold-2);font-size:1.42rem;font-weight:900;direction:ltr;letter-spacing:.5px;line-height:1.15;text-shadow:0 2px 12px rgba(0,0,0,.35)}
+.logo-txt span{color:#CFDCD0;font-size:.74rem;font-weight:600}
 .nav-menu{display:flex;align-items:center;gap:4px}
 .nav-menu a{padding:9px 16px;border-radius:10px;color:#DCE7DE;font-weight:700;font-size:.97rem;transition:.2s;position:relative}
 .nav-menu a:hover{color:#fff}
@@ -424,7 +424,7 @@ footer{background:var(--green-950);color:#B7C5BA;padding:54px 0 34px;text-align:
     <a class="logo" href="#home" aria-label="الرئيسية">
       <span class="logo-mark">&lt;/&gt;</span>
       <span class="logo-txt">
-        <b data-cfg="brand" style="direction:ltr">KareemTech</b>
+        <b data-cfg="brand">KareemTech</b>
         <span data-cfg="role">مهندس برمجيات ومطوّر حلول</span>
       </span>
     </a>
@@ -854,13 +854,7 @@ footer{background:var(--green-950);color:#B7C5BA;padding:54px 0 34px;text-align:
           <div class="c-ic wa">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </div>
-          <div><b>واتساب 1 — الأسرع</b><span dir="ltr" data-cfg="phone-display">+967 772 008 454</span></div>
-        </a>
-        <a class="c-item" href="#" data-wa data-wa-num="whatsapp2" data-msg="السلام عليكم 👋 جيت من صفحتك الشخصية.">
-          <div class="c-ic wa">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </div>
-          <div><b>واتساب 2</b><span dir="ltr" data-cfg="phone2-display">+967 735 717 710</span></div>
+          <div><b>واتساب — الأسرع</b><span dir="ltr" data-cfg="phone-display">+967 735 717 710</span></div>
         </a>
         <a class="c-item" href="#" data-mail>
           <div class="c-ic">
@@ -914,10 +908,8 @@ const CONFIG = {
   brand: "KareemTech",                   // 👈 اسم الموقع (يظهر أعلى يمين الصفحة)
   name: "عبدالكريم رشاد سيف",            // 👈 اسمك (يظهر بالواجهة والفوتر)
   role: "مهندس برمجيات ومطوّر حلول",
-  whatsapp: "967772008454",              // 👈 واتساب 1: بالصيغة الدولية بدون + (967 = اليمن)
-  whatsapp2: "967735717710",             // 👈 واتساب 2
-  phoneDisplay: "+967 772 008 454",      // 👈 الرقم الأول بشكل مقروء للعرض
-  phone2Display: "+967 735 717 710",     // 👈 الرقم الثاني بشكل مقروء للعرض
+  whatsapp: "967735717710",              // 👈 رقم الواتساب: بالصيغة الدولية بدون + (967 = اليمن)
+  phoneDisplay: "+967 735 717 710",      // 👈 الرقم بشكل مقروء للعرض
   email: "you@example.com",              // 👈 بريدك الإلكتروني
   socials: {                             // 👈 روابط حساباتك (اتركها "" لإخفائها)
     GitHub: "",
