@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<!--
+  ═══════════════════════════════════════════════════════════
+  صفحتي الشخصية — عبدالكريم رشاد سيف (قالب أخضر/ذهبي فخم)
+  ✏️ لتعديل بياناتك (الاسم/الواتساب/البريد/الأرقام):
+     انزل لآخر الملف وعدّل كائن CONFIG في أول السكربت فقط.
+  🖼️ لعرض أعمالك الحقيقية: ابحث عن تعليق "الأعمال".
+  🌐 للنشر مجاناً: netlify.com/drop  أو  GitHub Pages
+  ═══════════════════════════════════════════════════════════
+-->
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KareemTech | عبدالكريم رشاد سيف — مهندس برمجيات: مواقع، تطبيقات، وأنظمة</title>
+<meta name="description" content="عبدالكريم رشاد سيف — مهندس برمجيات ومطوّر حلول: مواقع ويب، تطبيقات جوال، أنظمة إدارة، ومشاريع تخرج للطلاب بخصم خاص. جودة عالية، تسليم في الموعد، ودعم بعد التسليم. اطلب عرض سعر مجاني.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E2E20'/%3E%3Ctext x='50' y='66' font-size='42' text-anchor='middle' fill='%23D3BC8D' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ══════════ الأساسيات ══════════ */
+:root{
+  --green-950:#06170F;
+  --green-900:#0A241A;
+  --green-800:#0E2E20;
+  --green-700:#14402D;
+  --gold:#B99763;
+  --gold-2:#D3BC8D;
+  --gold-dark:#8F6E3F;
+  --cream:#F3F0E9;
+  --line:#E6E0D2;
+  --text:#22312A;
+  --muted:#5F6E64;
+  --wa:#25d366;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cairo','Segoe UI',Tahoma,sans-serif;
+  background:#fff;color:var(--text);
+  line-height:1.9;overflow-x:hidden;
+}
+::selection{background:rgba(185,151,99,.35)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:#0E2E20;border-radius:8px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1180px,92%);margin-inline:auto}
+section{padding:100px 0;scroll-margin-top:96px;position:relative}
+.w-full{width:100%}
+
+/* ظهور تدريجي عند التمرير */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+}
+
+.gold-text{color:var(--gold-2)}
+
+/* ══════════ الأزرار ══════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 32px;border-radius:999px;font-weight:800;font-size:1rem;
+  border:1.5px solid transparent;cursor:pointer;transition:.25s;font-family:inherit;
+}
+.btn svg{width:19px;height:19px;flex-shrink:0}
+.btn-light{background:#fff;color:var(--green-900)}
+.btn-light:hover{background:var(--gold-2);transform:translateY(-3px)}
+.btn-outline{border-color:rgba(255,255,255,.75);color:#fff;background:transparent}
+.btn-outline:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-3px)}
+.btn-dark{background:var(--green-900);color:#fff}
+.btn-dark:hover{background:var(--green-700);transform:translateY(-3px)}
+.btn-ghost{border-color:var(--line);color:var(--green-900);background:#fff}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-dark);transform:translateY(-3px)}
+.btn-whats{background:var(--wa);color:#06281a}
+.btn-whats:hover{transform:translateY(-3px);box-shadow:0 16px 36px -14px rgba(37,211,102,.7)}
+
+/* ══════════ الهيدر ══════════ */
+header{
+  position:fixed;top:0;inset-inline:0;z-index:100;
+  background:var(--green-900);transition:.3s;
+}
+header.scrolled{box-shadow:0 10px 30px -12px rgba(0,0,0,.45);background:rgba(8,28,19,.97);backdrop-filter:blur(10px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  width:46px;height:46px;flex-shrink:0;border:1.6px solid var(--gold-2);border-radius:12px;
+  display:grid;place-items:center;color:var(--gold-2);
+  font-family:Consolas,monospace;font-weight:700;font-size:1rem;
+  background:rgba(211,188,141,.08);
+}
+.logo-txt{display:flex;flex-direction:column;line-height:1.4}
+.logo-txt b{color:#fff;font-size:1rem;font-weight:800}
+.logo-txt span{color:var(--gold-2);font-size:.68rem;font-weight:700}
+.nav-menu{display:flex;align-items:center;gap:4px}
+.nav-menu a{padding:9px 16px;border-radius:10px;color:#DCE7DE;font-weight:700;font-size:.97rem;transition:.2s;position:relative}
+.nav-menu a:hover{color:#fff}
+.nav-menu a:hover::after{
+  content:"";position:absolute;bottom:3px;inset-inline:18px;height:2px;
+  background:var(--gold);border-radius:2px;
+}
+.nav-cta{background:#fff;color:var(--green-900);padding:10px 24px;border-radius:999px;font-weight:800;font-size:.92rem;transition:.25s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold-2);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:10px}
+.burger span{width:24px;height:2px;background:#fff;transition:.3s;border-radius:2px}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ══════════ الهيرو ══════════ */
+.hero{
+  margin-top:84px;min-height:min(92vh,820px);
+  display:flex;align-items:center;
+  background:
+    linear-gradient(100deg,rgba(6,23,15,.92) 10%,rgba(6,23,15,.72) 52%,rgba(6,23,15,.45) 100%),
+    url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80") center/cover no-repeat,
+    var(--green-900);
+}
+.hero-content{max-width:680px;padding:90px 0}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:99px;
+  border:1px solid rgba(211,188,141,.5);background:rgba(211,188,141,.12);
+  color:var(--gold-2);font-weight:800;font-size:.85rem;margin-bottom:24px;
+}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.hero h1{color:#fff;font-size:clamp(1.9rem,4.2vw,3.2rem);font-weight:900;line-height:1.5;margin-bottom:20px}
+.hero .lead{color:#D9E2DA;font-size:1.08rem;max-width:560px;margin-bottom:34px}
+.hero .lead b{color:#fff}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.hero-points{display:flex;gap:22px;flex-wrap:wrap;list-style:none;margin-top:36px}
+.hero-points li{display:flex;align-items:center;gap:8px;color:#D9E2DA;font-size:.92rem;font-weight:600}
+.hero-points svg{width:17px;height:17px;color:var(--gold-2);flex-shrink:0}
+
+/* شريط الأرقام */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:70px;
+  border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:30px;
+  background:rgba(6,23,15,.5);backdrop-filter:blur(6px);
+}
+.stat{text-align:center}
+.stat-num{display:block;font-size:2rem;font-weight:900;color:var(--gold-2)}
+.stat-label{color:#C6D3C8;font-size:.88rem;font-weight:700}
+
+/* ══════════ عناوين الأقسام ══════════ */
+.sec-title{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px}
+.sec-title h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;color:var(--green-900)}
+.head-ic{
+  width:48px;height:48px;border:1.6px solid var(--green-800);border-radius:13px;
+  display:grid;place-items:center;color:var(--green-800);flex-shrink:0;background:#fff;
+}
+.head-ic svg{width:24px;height:24px}
+.sec-head p{max-width:760px;margin-inline:auto;text-align:center;color:var(--muted);font-size:1.02rem}
+
+/* ══════════ نبذة عني ══════════ */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.about-txt h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;color:var(--green-900);margin-bottom:6px}
+.about-txt .rule{width:70px;height:3px;background:var(--gold);border-radius:3px;margin:14px 0 28px}
+.about-txt p{color:var(--muted);margin-bottom:18px;font-size:1.02rem;text-align:justify}
+.about-media{height:560px;display:flex;gap:20px;align-items:stretch}
+.about-smalls{width:33%;display:flex;flex-direction:column;gap:20px;justify-content:center}
+.about-smalls .ph{height:calc(50% - 10px);border-radius:24px;overflow:hidden;background:#E8E2D6}
+.about-smalls img{width:100%;height:100%;object-fit:cover}
+.big-wrap{position:relative;flex:1}
+.big-wrap::before{
+  content:"";position:absolute;top:20px;inset-inline-end:-18px;width:100%;height:100%;
+  border:1.5px solid rgba(185,151,99,.55);border-radius:230px 230px 30px 30px;
+}
+.big-wrap img{
+  position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
+  border-radius:230px 230px 30px 30px;background:#E8E2D6;
+  box-shadow:0 34px 70px -30px rgba(10,36,26,.45);
+}
+
+/* ══════════ بطاقات عامة ══════════ */
+.grid-4v{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px}
+.grid-3v{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.vv-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:38px 28px;text-align:center;transition:.3s;
+}
+.vv-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px -26px rgba(10,36,26,.35);border-color:rgba(185,151,99,.6)}
+.vv-ic{
+  width:58px;height:58px;margin:0 auto 18px;border:1.5px solid var(--gold);
+  border-radius:16px;display:grid;place-items:center;color:var(--gold-dark);
+  background:linear-gradient(180deg,rgba(185,151,99,.10),transparent);
+  font-size:1.5rem;
+}
+.vv-ic svg{width:27px;height:27px}
+.vv-card h3{font-size:1.15rem;font-weight:900;color:var(--green-900);margin-bottom:8px}
+.vv-card p{color:var(--muted);font-size:.94rem}
+
+/* ══════════ الخدمات ══════════ */
+.services{background:var(--cream)}
+.srv{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:34px 30px;transition:.3s;position:relative;overflow:hidden;
+}
+.srv::after{
+  content:"";position:absolute;top:0;inset-inline-start:0;width:0;height:3px;
+  background:var(--gold);transition:.35s;
+}
+.srv:hover{transform:translateY(-6px);box-shadow:0 26px 50px -26px rgba(10,36,26,.3);border-color:rgba(185,151,99,.5)}
+.srv:hover::after{width:100%}
+.srv-ic{
+  width:56px;height:56px;border-radius:15px;display:grid;place-items:center;margin-bottom:20px;
+  background:linear-gradient(135deg,rgba(185,151,99,.16),rgba(20,64,45,.08));
+  border:1px solid rgba(185,151,99,.35);color:var(--gold-dark);transition:.3s;
+}
+.srv:hover .srv-ic{background:var(--green-800);color:var(--gold-2);border-color:var(--green-800)}
+.srv-ic svg{width:26px;height:26px}
+.srv h3{font-size:1.13rem;font-weight:800;color:var(--green-900);margin-bottom:8px}
+.srv p{color:var(--muted);font-size:.95rem}
+.service-more{
+  margin-top:36px;text-align:center;padding:20px;border-radius:16px;background:#fff;
+  border:1px dashed rgba(185,151,99,.6);color:var(--muted);font-weight:700;
+}
+.service-more b{color:var(--gold-dark)}
+
+/* لماذا أنا */
+.why-item{text-align:right}
+.why-item .vv-ic{margin-inline:0}
+.why-item p{text-align:right}
+
+/* خطوات العمل */
+.steps{background:var(--cream)}
+.step-num{
+  width:52px;height:52px;border-radius:50%;background:var(--gold);color:#fff;
+  display:grid;place-items:center;font-weight:900;font-size:1.25rem;margin-bottom:18px;
+  box-shadow:0 10px 24px -10px rgba(143,110,63,.8);
+}
+
+/* ══════════ الأعمال ══════════ */
+.work-thumb{
+  height:170px;border-radius:14px;margin:-34px -30px 22px;position:relative;overflow:hidden;
+  display:grid;place-items:center;font-size:3.2rem;
+}
+.wt-1{background:linear-gradient(135deg,#0E2E20,#14402D)}
+.wt-2{background:linear-gradient(135deg,#8F6E3F,#B99763)}
+.wt-3{background:linear-gradient(135deg,#06170F,#0E2E20)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.tag{
+  padding:4px 13px;border-radius:99px;font-size:.76rem;font-weight:800;
+  background:rgba(185,151,99,.12);color:var(--gold-dark);border:1px solid rgba(185,151,99,.3);
+}
+
+/* ══════════ الأسعار ══════════ */
+.pricing{background:var(--cream)}
+.price-card{display:flex;flex-direction:column;text-align:right}
+.price-card.popular{
+  border-color:rgba(185,151,99,.75);background:linear-gradient(180deg,rgba(211,188,141,.16),#fff 55%);
+  box-shadow:0 30px 60px -25px rgba(143,110,63,.4);
+}
+.pop-badge{
+  position:absolute;top:-14px;inset-inline-start:50%;transform:translateX(50%);
+  background:var(--gold);color:#fff;font-size:.78rem;font-weight:900;
+  padding:5px 18px;border-radius:99px;white-space:nowrap;box-shadow:0 8px 20px -8px rgba(143,110,63,.9);
+}
+html[dir="rtl"] .pop-badge{transform:translateX(50%)}
+.price-name{font-weight:900;font-size:1.15rem;color:var(--green-900);margin-bottom:4px}
+.price-for{color:var(--muted);font-size:.88rem;margin-bottom:18px}
+.price-list{list-style:none;margin-bottom:26px;flex:1}
+.price-list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.93rem;padding:7px 0;font-weight:600}
+.price-list svg{width:18px;height:18px;color:var(--gold-dark);flex-shrink:0;margin-top:7px}
+.pricing-note{text-align:center;color:var(--muted);margin-top:36px;font-weight:600}
+.pricing-note b{color:var(--gold-dark)}
+
+/* خصم الطلاب */
+.sd-chip{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  padding:5px 15px;border-radius:99px;font-size:.8rem;font-weight:800;
+  background:rgba(185,151,99,.12);color:var(--gold-dark);border:1px solid rgba(185,151,99,.35);
+}
+.student-discount{
+  margin-top:26px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  padding:28px 30px;border-radius:var(--radius);
+  background:linear-gradient(120deg,rgba(185,151,99,.14),rgba(20,64,45,.10));
+  border:1px solid rgba(185,151,99,.5);
+  box-shadow:0 20px 44px -22px rgba(143,110,63,.45);
+}
+.sd-icon{
+  width:64px;height:64px;border-radius:18px;background:var(--gold);
+  display:grid;place-items:center;font-size:1.9rem;flex-shrink:0;
+  box-shadow:0 12px 28px -10px rgba(143,110,63,.8);
+}
+.sd-text{flex:1;min-width:250px}
+.student-discount h3{font-size:1.2rem;font-weight:900;color:var(--green-900);margin-bottom:4px}
+.student-discount p{color:var(--muted);font-size:.93rem}
+.student-discount .btn{flex-shrink:0}
+@media(max-width:640px){
+  .student-discount{flex-direction:column;text-align:center}
+  .student-discount .btn{width:100%}
+}
+
+/* ══════════ شريط الدعوة ══════════ */
+.cta-band{
+  background:
+    radial-gradient(560px 240px at 85% 20%,rgba(185,151,99,.22),transparent 65%),
+    var(--green-900);
+  padding:72px 0;
+}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.cta-inner h3{color:#fff;font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:900}
+.cta-inner p{color:#C6D3C8;margin-top:4px}
+
+/* ══════════ الأسئلة ══════════ */
+.faq-list{max-width:780px;margin-inline:auto;display:flex;flex-direction:column;gap:14px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s}
+details[open]{border-color:rgba(185,151,99,.6);background:rgba(185,151,99,.04)}
+summary{
+  list-style:none;cursor:pointer;padding:20px 24px;font-weight:800;color:var(--green-900);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+summary .plus{font-size:1.4rem;color:var(--gold-dark);transition:.3s;line-height:1;flex-shrink:0}
+details[open] .plus{transform:rotate(45deg)}
+.faq-a{padding:0 24px 22px;color:var(--muted);font-size:.95rem}
+
+/* ══════════ التواصل ══════════ */
+.contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start;margin-top:56px}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:38px}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:800;font-size:.92rem;margin-bottom:8px;color:var(--green-900)}
+.field input,.field select,.field textarea{
+  width:100%;background:#FBFAF7;border:1px solid var(--line);border-radius:13px;
+  padding:13px 17px;color:var(--text);font-family:inherit;font-size:.95rem;transition:.2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(185,151,99,.18)}
+.field textarea{resize:vertical;min-height:130px}
+.form-note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px}
+.contact-side{display:flex;flex-direction:column;gap:16px}
+.c-item{
+  display:flex;gap:16px;align-items:center;background:#fff;
+  border:1px solid var(--line);border-radius:16px;padding:22px 24px;transition:.25s;
+}
+.c-item:hover{transform:translateY(-3px);border-color:rgba(185,151,99,.6)}
+.c-ic{
+  width:48px;height:48px;flex-shrink:0;border-radius:13px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(185,151,99,.16),rgba(20,64,45,.08));
+  border:1px solid rgba(185,151,99,.35);color:var(--gold-dark);
+}
+.c-item .c-ic.wa{color:#1faa53}
+.c-ic svg{width:22px;height:22px}
+.c-item b{display:block;font-size:.98rem;color:var(--green-900)}
+.c-item span{color:var(--muted);font-size:.87rem;word-break:break-all}
+.availability{
+  padding:20px 24px;border-radius:16px;border:1px dashed rgba(37,211,102,.5);
+  background:rgba(37,211,102,.05);color:var(--muted);font-size:.9rem;font-weight:600;
+}
+.availability b{color:#1faa53}
+
+/* ══════════ الفوتر ══════════ */
+footer{background:var(--green-950);color:#B7C5BA;padding:54px 0 34px;text-align:center}
+.f-logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px}
+.f-logo .logo-mark{width:42px;height:42px}
+.f-links{display:flex;justify-content:center;gap:26px;margin:16px 0 22px;flex-wrap:wrap}
+.f-links a{color:#C9D6CC;font-weight:700;font-size:.93rem;transition:.2s}
+.f-links a:hover{color:var(--gold-2)}
+.f-line{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;font-size:.86rem;color:#8FA294}
+.f-line b{color:#DCE7DE}
+
+/* زر واتساب العائم */
+.wa-float{
+  position:fixed;bottom:26px;inset-inline-start:26px;z-index:90;
+  width:60px;height:60px;border-radius:50%;background:var(--wa);
+  display:grid;place-items:center;color:#fff;
+  box-shadow:0 14px 34px -10px rgba(37,211,102,.8);transition:.25s;
+}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:30px;height:30px}
+.wa-float::after{
+  content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);
+  animation:ring 2s ease-out infinite;
+}
+@keyframes ring{to{transform:scale(1.55);opacity:0}}
+
+/* ══════════ التجاوب ══════════ */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:54px}
+  .about-media{max-width:560px;margin-inline:auto}
+  .grid-4v{grid-template-columns:repeat(2,1fr)}
+  .grid-3v{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr);gap:26px}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  .burger{display:flex}
+  .nav-menu{
+    position:fixed;top:84px;inset-inline:0;z-index:99;
+    background:rgba(8,28,19,.98);backdrop-filter:blur(14px);
+    flex-direction:column;align-items:stretch;padding:18px;gap:4px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    transform:translateY(-130%);transition:.35s;opacity:0;
+  }
+  .nav-menu.open{transform:none;opacity:1}
+  .nav-menu a{padding:13px 18px;font-size:1rem;color:#fff}
+  .nav-cta{display:none}
+}
+@media(max-width:640px){
+  section{padding:70px 0}
+  .grid-4v,.grid-3v{grid-template-columns:1fr}
+  .hero{margin-top:76px;min-height:80vh}
+  .nav-inner{height:76px}
+  .nav-menu{top:76px}
+  .about-media{height:430px}
+  .form-card{padding:26px}
+  .cta-inner{flex-direction:column;text-align:center}
+  .cta-row .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ الهيدر ══════════ -->
+<header id="header">
+  <div class="container nav-inner">
+    <a class="logo" href="#home" aria-label="الرئيسية">
+      <span class="logo-mark">&lt;/&gt;</span>
+      <span class="logo-txt">
+        <b data-cfg="brand" style="direction:ltr">KareemTech</b>
+        <span data-cfg="role">مهندس برمجيات ومطوّر حلول</span>
+      </span>
+    </a>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#home">الرئيسية</a>
+      <a href="#audience">لمن؟</a>
+      <a href="#services">خدماتي</a>
+      <a href="#work">أعمالي</a>
+      <a href="#pricing">الأسعار</a>
+      <a href="#contact">تواصل معي</a>
+    </nav>
+    <a href="#" data-wa data-msg="السلام عليكم 👋 أرغب بالحصول على عرض سعر مجاني لمشروعي." class="nav-cta">اطلب خدمتك الآن</a>
+    <button class="burger" id="burger" aria-label="فتح القائمة">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+<!-- ══════════ الهيرو ══════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <span class="badge"><span class="dot"></span> متاح الآن لمشاريع جديدة</span>
+      <h1>حوّل فكرتك إلى <span class="gold-text">حلّ برمجي</span> يعمل باحتراف — بلا تعقيد</h1>
+      <p class="lead">أنا <b data-cfg="name">اسمك</b>، مهندس برمجيات ومطوّر حلول. أبني المواقع والتطبيقات والأنظمة للطلاب وأصحاب الأعمال والمتاجر — من الفكرة إلى التسليم والدعم، وبجودة تُشبه المشاريع الكبيرة.</p>
+      <div class="cta-row">
+        <a href="#" data-wa data-msg="السلام عليكم 👋 أرغب بالحصول على عرض سعر مجاني لمشروعي." class="btn btn-whats">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          احصل على عرض سعر مجاني
+        </a>
+        <a href="#services" class="btn btn-outline">استعرض خدماتي ↓</a>
+      </div>
+      <ul class="hero-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تسليم في الموعد</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> توثيق وشرح للكود</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> دعم بعد التسليم</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 🎓 خصم خاص لطلاب الجامعات</li>
+      </ul>
+    </div>
+
+    <!-- الأرقام (عدّلها من CONFIG في الأسفل) -->
+    <div class="stats reveal" id="stats">
+      <div class="stat"><span class="stat-num" data-count="60" data-suffix="+">0</span><span class="stat-label">مشروع منجز</span></div>
+      <div class="stat"><span class="stat-num" data-count="40" data-suffix="+">0</span><span class="stat-label">عميل سعيد</span></div>
+      <div class="stat"><span class="stat-num" data-count="6" data-suffix="">0</span><span class="stat-label">سنوات خبرة</span></div>
+      <div class="stat"><span class="stat-num" data-count="24" data-suffix="">0</span><span class="stat-label">ساعة — متوسط سرعة الرد</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ نبذة عني ══════════ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-txt reveal">
+        <h2>نبذة عني</h2>
+        <div class="rule"></div>
+        <p>أنا <b data-cfg="name">اسمك</b>، مهندس برمجيات ومطوّر حلول. أؤمن بأن العمل البرمجي الجيد لا يُقدَّم بالشكل التقليدي؛ بل يجب أن يتّسم بالمواكبة المتلازمة مع العصر، وأن ينطلق من فهم دقيق لاحتياجك قبل كتابة أي سطر كود.</p>
+        <p>شعاري في عملي اليومي أن المشروع الجيد يبدأ بشريك موثوق: التزام بالجدول الزمني، تواصل واضح وسريع، أسعار عادلة وشفافة، وتوثيق وشرح كامل — لتنطلق فكرتك بثقة وتستمر بعد التسليم.</p>
+      </div>
+      <div class="about-media reveal">
+        <div class="about-smalls">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=640&q=80" alt="كود برمجي على الشاشة" loading="lazy"></div>
+          <div class="ph"><img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=640&q=80" alt="مطور يعمل على لابتوب" loading="lazy"></div>
+        </div>
+        <div class="big-wrap">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80" alt="شاشة برمجة" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ لمن هذه الخدمات؟ ══════════ -->
+<section id="audience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>لمن هذه الخدمات؟</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+      </div>
+      <p>سواء كنت طالباً تواجه مشروع تخرج، أو صاحب عمل تريد رقمنة نشاطك، أو شخصاً عنده فكرة… ستجد هنا ما يناسبك.</p>
+    </div>
+    <div class="grid-4v" data-stagger>
+      <div class="vv-card">
+        <div class="vv-ic">🎓</div>
+        <h3>للطلاب</h3>
+        <p>مشروع تخرج، واجبات برمجية، أو شرح مفهوم — تنفيذ كامل مع توثيق وشرح خطوة بخطوة حتى تفهم وتناقش بثقة.</p>
+        <span class="sd-chip">🎓 خصم خاص لطلاب الجامعات</span>
+      </div>
+      <div class="vv-card">
+        <div class="vv-ic">🏪</div>
+        <h3>لأصحاب الأعمال والمتاجر</h3>
+        <p>متجر إلكتروني، نظام فواتير ومخزون، أو موقع تعريفي احترافي يزيد وصولك ومبيعاتك ويوفّر وقتك.</p>
+      </div>
+      <div class="vv-card">
+        <div class="vv-ic">💡</div>
+        <h3>لأصحاب الأفكار</h3>
+        <p>عندك فكرة تطبيق أو موقع؟ نبني معاً نسخة أولى (MVP) سريعة وبتكلفة ذكية تثبت الفكرة قبل التوسّع.</p>
+      </div>
+      <div class="vv-card">
+        <div class="vv-ic">🚀</div>
+        <h3>للشركات الناشئة</h3>
+        <p>تطوير سريع، ربط وتكامل APIs، وأتمتة العمليات اليومية — تركّز أنت على النمو ونتولى أنا التقنية.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ الخدمات ══════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>خدماتي</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+        </span>
+      </div>
+      <p>من صفحة واحدة صغيرة إلى نظام متكامل — أقدّم لك حلاً يناسب حجم احتياجك وميزانيتك.</p>
+    </div>
+    <div class="grid-3v" data-stagger>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>تطوير مواقع الويب</h3>
+        <p>مواقع تعريفية، متاجر إلكترونية، ولوحات تحكم — سريعة، متوافقة مع الجوال، ومهيأة لمحركات البحث.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <h3>تطبيقات الجوال</h3>
+        <p>تطبيقات أندرويد و iOS بتجربة استخدام عصرية وسلسة، من الفكرة حتى النشر على المتاجر.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>برامج وأنظمة إدارة</h3>
+        <p>أنظمة نقاط بيع، مخازن، فواتير، حجوزات، وCRM — مصممة على مقاس عملك وتبسّط يومك.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg></div>
+        <h3>مشاريع التخرج والواجبات</h3>
+        <p>تنفيذ كامل مع توثيق وشرح تفصيلي، لتستلم مشروعاً تفهمه وتناقشه بثقة أمام اللجنة.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <h3>قواعد البيانات وتحليلها</h3>
+        <p>تصميم قواعد بيانات منظمة، ولوحات بيانات وتقارير (Dashboards) تدعم قراراتك بالأرقام.</p>
+      </div>
+      <div class="srv">
+        <div class="srv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3>صيانة وتطوير أنظمة قائمة</h3>
+        <p>إصلاح الأخطاء، تحسين الأداء والسرعة، وإضافة ميزات جديدة لأنظمتك الحالية دون إعادة بناء.</p>
+      </div>
+    </div>
+    <div class="service-more reveal">
+      وأيضاً: <b>أتمتة المهام المتكررة</b> • سكريبتات مخصصة • نشر واستضافة • ربط APIs • <b>استشارات تقنية</b> — اسألني عن أي شيء
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ لماذا أنا ══════════ -->
+<section id="why">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>لماذا تختارني؟</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.2 7 21l5-2.6L17 21l-1.5-7.8"/></svg>
+        </span>
+      </div>
+      <p>لأن المشروع الجيد… يبدأ بشريك موثوق.</p>
+    </div>
+    <div class="grid-3v" data-stagger>
+      <div class="vv-card why-item"><div class="vv-ic">⚡</div><h3>سرعة في التنفيذ</h3><p>ألتزم بجدول زمني واضح من أول يوم، وأسلّم قبل الموعد في أغلب الحالات.</p></div>
+      <div class="vv-card why-item"><div class="vv-ic">💬</div><h3>تواصل سهل وسريع</h3><p>رد سريع على رسائلك، وتحديثات دورية عن تقدّم مشروعك دون أن تسأل.</p></div>
+      <div class="vv-card why-item"><div class="vv-ic">📚</div><h3>توثيق وشرح</h3><p>تستلم كوداً منظماً وموثقاً تستطيع فهمه وتطويره لاحقاً — لا صندوق أسود.</p></div>
+      <div class="vv-card why-item"><div class="vv-ic">🔒</div><h3>سرية تامة</h3><p>فكرتك وبياناتك في أمان. يمكن توقيع اتفاقية سرية قبل البدء بكل ارتياح.</p></div>
+      <div class="vv-card why-item"><div class="vv-ic">💰</div><h3>أسعار عادلة وشفافة</h3><p>عرض سعر واضح بلا مفاجآت، مع إمكانية تقسيط المبلغ على مراحل المشروع.</p></div>
+      <div class="vv-card why-item"><div class="vv-ic">🛟</div><h3>دعم بعد التسليم</h3><p>فترة دعم مجانية بعد التسليم لإصلاح أي ملاحظة — راحتك أولوية.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ خطوات العمل ══════════ -->
+<section class="steps" id="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>كيف نعمل معاً؟</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </span>
+      </div>
+      <p>أربع خطوات بسيطة من الرسالة إلى التسليم.</p>
+    </div>
+    <div class="grid-4v" data-stagger>
+      <div class="vv-card">
+        <div class="step-num">1</div>
+        <h3>تواصل واشرح فكرتك</h3>
+        <p>رسالة واتساب واحدة تكفي. أطرح عليك أسئلة توضيحية ونحدد الاحتياج بدقة.</p>
+      </div>
+      <div class="vv-card">
+        <div class="step-num">2</div>
+        <h3>عرض سعر ومدة تنفيذ</h3>
+        <p>تصلك خطة واضحة بالنطاق والمدة والسعر خلال 24 ساعة — بلا التزام.</p>
+      </div>
+      <div class="vv-card">
+        <div class="step-num">3</div>
+        <h3>التنفيذ مع تحديثات</h3>
+        <p>أبدأ العمل وأبقيك على اطلاع بكل مرحلة، مع نسخ تجريبية تراها وتجربها.</p>
+      </div>
+      <div class="vv-card">
+        <div class="step-num">4</div>
+        <h3>التسليم والدعم</h3>
+        <p>تسليم كامل مع شرح وتوثيق، ثم دعم مجاني لضمان أن كل شيء يعمل بسلاسة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ الأعمال ══════════ -->
+<!-- ✏️ استبدل هذه البطاقات بأعمالك الحقيقية مع روابط وصور -->
+<section id="work">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>أعمالي</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </span>
+      </div>
+      <p>نماذج من ما بنيته — أعمال حقيقية لأشخاص كانوا في مكانك تماماً.</p>
+    </div>
+    <div class="grid-3v" data-stagger>
+      <div class="srv">
+        <div class="work-thumb wt-1">🛒</div>
+        <h3>متجر إلكتروني متكامل</h3>
+        <p>متجر مع سلة شراء ولوحة تحكم وربط بوابة دفع — ارتفعت المبيعات وتنظّمت إدارة الطلبات.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">لوحة تحكم</span><span class="tag">دفع إلكتروني</span></div>
+      </div>
+      <div class="srv">
+        <div class="work-thumb wt-2">🗂️</div>
+        <h3>نظام فواتير ومخزون</h3>
+        <p>نظام نقاط بيع لمتجر تجزئة: فواتير، مخزون لحظي، وتقارير أرباح — وفر ساعات يومياً.</p>
+        <div class="tags"><span class="tag">ويب</span><span class="tag">SQL Server</span><span class="tag">تقارير</span></div>
+      </div>
+      <div class="srv">
+        <div class="work-thumb wt-3">🎓</div>
+        <h3>تطبيق حجز مواعيد — مشروع تخرج</h3>
+        <p>تطبيق جوال كامل مع توثيق وشرح تفصيلي وعرض تقديمي — ناقشته الطالبة بثقة وحصلت على ممتاز.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">توثيق كامل</span></div>
+      </div>
+    </div>
+    <div class="service-more reveal">
+      مشروعك القادم قد يكون هنا 🤝 — <a href="#" data-wa data-msg="السلام عليكم 👋 عندي مشروع أريد تنفيذه." style="color:var(--gold-dark);font-weight:800">ابدأ محادثة الآن</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ الأسعار ══════════ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>الأسعار</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 12 22 2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.4"/></svg>
+        </span>
+      </div>
+      <p>كل مشروع يُقدَّر على حدة حسب نطاقه — لا أسعار جاهزة تضغط عليك ولا مفاجآت لاحقة.</p>
+    </div>
+    <div class="grid-3v" data-stagger>
+      <div class="srv price-card">
+        <div class="price-name">أساسي</div>
+        <div class="price-for">للمهام الصغيرة والسريعة</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 🎓 خصم خاص لطلاب الجامعات</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> واجبات ومهام برمجية محددة</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> إصلاح خطأ أو تعديل في مشروع قائم</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> صفحة ويب واحدة بسيطة</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تسليم سريع خلال أيام</li>
+        </ul>
+        <a href="#" data-wa data-msg="السلام عليكم 👋 أرغب بعرض سعر لباقة أساسية." class="btn btn-ghost w-full">اطلب عرضاً</a>
+      </div>
+      <div class="srv price-card popular">
+        <span class="pop-badge">الأكثر طلباً ⭐</span>
+        <div class="price-name">احترافي</div>
+        <div class="price-for">للمواقع والأنظمة المتوسطة</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> موقع أو نظام كامل بتصميم مخصص</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> كود موثّق + شرح تفصيلي</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تعديلات حتى الرضا الكامل</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> دعم مجاني شهر بعد التسليم</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> نشر ورفع على الاستضافة</li>
+        </ul>
+        <a href="#" data-wa data-msg="السلام عليكم 👋 أرغب بعرض سعر للباقة الاحترافية." class="btn btn-dark w-full">اطلب عرضاً</a>
+      </div>
+      <div class="srv price-card">
+        <div class="price-name">مخصص / مؤسسي</div>
+        <div class="price-for">للمشاريع الكبيرة والمتجرة</div>
+        <ul class="price-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> منتج كامل (MVP) من الصفر</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> تطبيق جوال + لوحة تحكم</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> دفعات على مراحل + اتفاق مكتوب</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> صيانة شهرية وتطوير مستمر</li>
+        </ul>
+        <a href="#" data-wa data-msg="السلام عليكم 👋 عندي مشروع كبير أريد مناقشته." class="btn btn-gold w-full">تحدث معي</a>
+      </div>
+    </div>
+    <div class="student-discount reveal">
+      <div class="sd-icon">🎓</div>
+      <div class="sd-text">
+        <h3>خصم خاص ومميز لطلاب الجامعات</h3>
+        <p>مشاريع التخرج والواجبات البرمجية بسعر مخفّض، مع توثيق وشرح كامل يجهّزك للمناقشة بثقة — أرسل إثبات قيدك الجامعي واحصل على الخصم فوراً.</p>
+      </div>
+      <a href="#" data-wa data-msg="السلام عليكم 👋 أنا طالب جامعي وأرغب بالاستفادة من الخصم الخاص بالطلاب على مشروعي (مشروع تخرج / واجب).🎓" class="btn btn-dark">استفد من الخصم الآن</a>
+    </div>
+    <p class="pricing-note reveal">💬 راسلني الآن وستصلك <b>خطة وعرض سعر مجاني خلال 24 ساعة</b> — بلا أي التزام.</p>
+  </div>
+</section>
+
+<!-- ══════════ شريط الدعوة ══════════ -->
+<div class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h3>جاهز نبدأ مشروعك؟</h3>
+      <p>راسلني الآن وستصلك خطة وعرض سعر مجاني خلال 24 ساعة — بلا أي التزام.</p>
+    </div>
+    <a href="#" data-wa data-msg="السلام عليكم 👋 أرغب ببدء مشروع جديد." class="btn btn-gold">تواصل عبر واتساب</a>
+  </div>
+</div>
+
+<!-- ══════════ الأسئلة الشائعة ══════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>أسئلة شائعة</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </span>
+      </div>
+      <p>كل ما يدور في بالك… أجبنا عليه.</p>
+    </div>
+    <div class="faq-list reveal">
+      <details open>
+        <summary>كيف نبدأ العمل معاً؟ <span class="plus">+</span></summary>
+        <div class="faq-a">أرسل فكرتك عبر واتساب أو نموذج التواصل بالأسفل، سأرد عليك بأسئلة توضيحية قصيرة، ثم أرسل لك خطة واضحة تتضمن النطاق والمدة والسعر. عند موافقتك نبدأ فوراً.</div>
+      </details>
+      <details>
+        <summary>هل يوجد خصم لطلاب الجامعات؟ <span class="plus">+</span></summary>
+        <div class="faq-a">نعم 🎓 خصم خاص ومميز لطلاب الجامعات على مشاريع التخرج والواجبات البرمجية، ويشمل التوثيق والشرح الكامل. أرسل إثبات قيدك الجامعي عند التواصل واحصل على العرض المخفّض فوراً.</div>
+      </details>
+      <details>
+        <summary>كم تستغرق مدة تنفيذ المشروع؟ <span class="plus">+</span></summary>
+        <div class="faq-a">حسب الحجم: المهمة الصغيرة من يوم إلى ثلاثة أيام، الموقع أو النظام المتوسط من أسبوع إلى ثلاثة أسابيع. تحصل على جدول زمني واضح قبل البدء، وألتزم به.</div>
+      </details>
+      <details>
+        <summary>كيف تتم عملية الدفع؟ <span class="plus">+</span></summary>
+        <div class="faq-a">عادةً دفعة مقدمة (30–50%) عند البدء، والباقي عند التسليم وموافقتك النهائية. المشاريع الكبيرة نوزّع قيمتها على مراحل تسليم واضحة.</div>
+      </details>
+      <details>
+        <summary>هل توفّر شرحاً وتوثيقاً للكود؟ <span class="plus">+</span></summary>
+        <div class="faq-a">نعم — هذا من أهم ما أميزني. كل مشروع يصلك موثقاً ومنظماً، وللطلاب أقدّم شرحاً تفصيلياً جاهزاً يجعلك تفهم مشروعك وتناقشه بثقة أمام اللجنة.</div>
+      </details>
+      <details>
+        <summary>هل تعمل عن بُعد مع أي مدينة أو دولة؟ <span class="plus">+</span></summary>
+        <div class="faq-a">نعم، كل شيء يتم عن بُعد عبر واتساب والاجتماعات الصوتية عند الحاجة. جغرافيا لا تعيق أي مشروع برمجي.</div>
+      </details>
+      <details>
+        <summary>ماذا لو احتجت تعديلات بعد التسليم؟ <span class="plus">+</span></summary>
+        <div class="faq-a">تشمل كل باقة فترة دعم مجانية لإصلاح أي ملاحظة على العمل المُسلَّم. أما الميزات الجديدة فتُقدَّر بسعر رمزي أو تُضمّن ضمن باقة صيانة.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ التواصل ══════════ -->
+<section id="contact" style="background:var(--cream)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title">
+        <h2>تواصل معي</h2>
+        <span class="head-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+      </div>
+      <p>املأ النموذج وسيصلني طلبك مباشرة على واتساب — أو راسلني بالطريقة التي تناسبك.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <form id="contactForm">
+          <div class="field">
+            <label for="f-name">الاسم</label>
+            <input id="f-name" name="name" type="text" required placeholder="اسمك الكريم">
+          </div>
+          <div class="field">
+            <label for="f-service">نوع الخدمة المطلوبة</label>
+            <select id="f-service" name="service" required>
+              <option value="" selected disabled>اختر نوع الخدمة…</option>
+              <option>موقع ويب</option>
+              <option>متجر إلكتروني</option>
+              <option>تطبيق جوال</option>
+              <option>نظام إدارة / برنامج</option>
+              <option>مشروع تخرج أو واجب</option>
+              <option>قاعدة بيانات / تحليل</option>
+              <option>صيانة أو تطوير نظام قائم</option>
+              <option>استشارة تقنية</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-details">تفاصيل المشروع</label>
+            <textarea id="f-details" name="details" required placeholder="اشرح فكرتك أو احتياجك بإيجاز: ما المطلوب؟ ومتى تريده؟"></textarea>
+          </div>
+          <button type="submit" class="btn btn-whats w-full">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            إرسال الطلب عبر واتساب 🚀
+          </button>
+          <p class="form-note">زر الإرسال يفتح واتساب برسالة جاهزة تحتوي طلبك — أرسلها وتبارك الله.</p>
+        </form>
+      </div>
+      <div class="contact-side" data-stagger>
+        <a class="c-item" href="#" data-wa data-msg="السلام عليكم 👋 جيت من صفحتك الشخصية.">
+          <div class="c-ic wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div><b>واتساب 1 — الأسرع</b><span dir="ltr" data-cfg="phone-display">+967 772 008 454</span></div>
+        </a>
+        <a class="c-item" href="#" data-wa data-wa-num="whatsapp2" data-msg="السلام عليكم 👋 جيت من صفحتك الشخصية.">
+          <div class="c-ic wa">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div><b>واتساب 2</b><span dir="ltr" data-cfg="phone2-display">+967 735 717 710</span></div>
+        </a>
+        <a class="c-item" href="#" data-mail>
+          <div class="c-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><b>البريد الإلكتروني</b><span data-cfg="email">you@example.com</span></div>
+        </a>
+        <div class="c-item" id="socialsCard" style="display:none">
+          <div class="c-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div><b>تجدني أيضاً على</b><span id="socialsLinks" style="display:flex;gap:14px;margin-top:4px"></span></div>
+        </div>
+        <div class="availability">🕐 <b>أوقات الرد:</b> يومياً من 9 صباحاً حتى 11 مساءً — غالباً أرد خلال ساعة أو أقل.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ══════════ الفوتر ══════════ -->
+<footer>
+  <div class="container">
+    <div class="f-logo">
+      <span class="logo-mark">&lt;/&gt;</span>
+      <span class="logo-txt">
+        <b data-cfg="name">اسمك</b>
+        <span data-cfg="role">مهندس برمجيات ومطوّر حلول</span>
+      </span>
+    </div>
+    <div class="f-links">
+      <a href="#services">الخدمات</a>
+      <a href="#work">الأعمال</a>
+      <a href="#pricing">الأسعار</a>
+      <a href="#contact">تواصل</a>
+    </div>
+    <div class="f-line">© <span id="year">2026</span> <b data-cfg="name">اسمك</b> — مهندس برمجيات ومطوّر حلول. صُنع بـ ❤️ وكود نظيف.</div>
+  </div>
+</footer>
+
+<!-- زر واتساب العائم -->
+<a class="wa-float" href="#" data-wa data-msg="السلام عليكم 👋 أرغب بالاستفسار عن خدمة برمجية." aria-label="تواصل عبر واتساب">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</a>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   ✏️✏️✏️  عدّل بياناتك من هنا فقط — وكل الصفحة تتحدث  ✏️✏️✏️
+   ═══════════════════════════════════════════════════════ */
+const CONFIG = {
+  brand: "KareemTech",                   // 👈 اسم الموقع (يظهر أعلى يمين الصفحة)
+  name: "عبدالكريم رشاد سيف",            // 👈 اسمك (يظهر بالواجهة والفوتر)
+  role: "مهندس برمجيات ومطوّر حلول",
+  whatsapp: "967772008454",              // 👈 واتساب 1: بالصيغة الدولية بدون + (967 = اليمن)
+  whatsapp2: "967735717710",             // 👈 واتساب 2
+  phoneDisplay: "+967 772 008 454",      // 👈 الرقم الأول بشكل مقروء للعرض
+  phone2Display: "+967 735 717 710",     // 👈 الرقم الثاني بشكل مقروء للعرض
+  email: "you@example.com",              // 👈 بريدك الإلكتروني
+  socials: {                             // 👈 روابط حساباتك (اتركها "" لإخفائها)
+    GitHub: "",
+    LinkedIn: "",
+    "X (تويتر)": "",
+    إنستغرام: ""
+  }
+};
+/* ════════════════ نهاية التعديلات ════════════════ */
+
+// بناء رابط واتساب (الرقم الأول هو الافتراضي ما لم تحدد غيره)
+const waLink = (num, msg) => "https://wa.me/" + (num || CONFIG.whatsapp) + "?text=" + encodeURIComponent(msg || "السلام عليكم 👋 أرغب بالاستفسار عن خدمة برمجية.");
+
+// تعبئة الاسم والبريد ورقم الواتساب في كل الصفحة
+document.querySelectorAll("[data-cfg]").forEach(el => {
+  const v = CONFIG[el.dataset.cfg];
+  if (v) el.textContent = v;
+});
+document.querySelectorAll("a[data-wa]").forEach(a => a.href = waLink(CONFIG[a.dataset.waNum] || CONFIG.whatsapp, a.dataset.msg));
+document.querySelectorAll("a[data-mail]").forEach(a => a.href = "mailto:" + CONFIG.email);
+document.title = CONFIG.brand + " | " + CONFIG.role;
+
+// روابط التواصل الاجتماعي (تظهر فقط لو مملوءة)
+const socials = Object.entries(CONFIG.socials).filter(([, url]) => url);
+if (socials.length) {
+  document.getElementById("socialsCard").style.display = "";
+  const box = document.getElementById("socialsLinks");
+  socials.forEach(([label, url]) => {
+    const a = document.createElement("a");
+    a.href = url; a.target = "_blank"; a.rel = "noopener";
+    a.textContent = label;
+    a.style.cssText = "color:var(--gold-dark);font-weight:800";
+    box.appendChild(a);
+  });
+}
+
+// الهيدر عند التمرير
+const header = document.getElementById("header");
+addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 30), { passive: true });
+
+// قائمة الجوال
+const burger = document.getElementById("burger");
+const menu = document.getElementById("navMenu");
+burger.addEventListener("click", () => {
+  burger.classList.toggle("open");
+  menu.classList.toggle("open");
+});
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  burger.classList.remove("open");
+  menu.classList.remove("open");
+}));
+
+// ظهور تدريجي مع تتابع
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+  });
+}, { threshold: .12 });
+document.querySelectorAll("section .reveal").forEach(el => io.observe(el));
+document.querySelectorAll("[data-stagger]").forEach(group => {
+  [...group.children].forEach((child, i) => {
+    child.classList.add("reveal");
+    child.style.transitionDelay = (i * 80) + "ms";
+    io.observe(child);
+  });
+});
+
+// عدّاد الأرقام
+function countUp(el) {
+  const target = +el.dataset.count, suffix = el.dataset.suffix || "";
+  const dur = 1500, t0 = performance.now();
+  (function tick(t) {
+    const p = Math.min((t - t0) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const statsIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll("[data-count]").forEach(countUp);
+      statsIO.unobserve(e.target);
+    }
+  });
+}, { threshold: .4 });
+statsIO.observe(document.getElementById("stats"));
+
+// نموذج التواصل → يفتح واتساب برسالة جاهزة
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  const msg =
+    "السلام عليكم 👋\n" +
+    "الاسم: " + f.name.value.trim() + "\n" +
+    "الخدمة المطلوبة: " + f.service.value + "\n" +
+    "تفاصيل المشروع: " + f.details.value.trim();
+  open(waLink(CONFIG.whatsapp, msg), "_blank");
+});
+
+// السنة الحالية
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
